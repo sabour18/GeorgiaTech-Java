@@ -1,4 +1,4 @@
-package Craps;
+package craps;
 
 import java.util.Random;
 

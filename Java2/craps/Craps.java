@@ -1,4 +1,4 @@
-package Craps;
+package craps;
 
 public class Craps {
 

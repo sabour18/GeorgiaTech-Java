@@ -1,4 +1,4 @@
-package Pond;
+package HW04_RareFrogsAndSpeedyFlies;
 
 public class Fly {
 
