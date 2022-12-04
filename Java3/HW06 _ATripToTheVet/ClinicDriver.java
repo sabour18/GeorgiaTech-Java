@@ -17,12 +17,14 @@ public class ClinicDriver {
             e.printStackTrace();
         }
 
-        String[] dayOneAppointments = dayOneReport.split("\\n");
-        for (String appointment : dayOneAppointments) {
-            if (!clinic.addToFile(appointment)) {
-                System.out.println("Appointment could not be added to file!");
-            }
-        }
+        /*
+         * String[] dayOneAppointments = dayOneReport.split("\\n");
+         * for (String appointment : dayOneAppointments) {
+         * if (!clinic.addToFile(appointment)) {
+         * System.out.println("Appointment could not be added to file!");
+         * }
+         * }
+         */
 
     }
 }

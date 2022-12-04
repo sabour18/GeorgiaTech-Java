@@ -17,6 +17,8 @@ public class Cat extends Pet {
         } else {
             this.miceCaught = miceCaught;
         }
+
+        System.out.println("HEALTH: " + getHealth());
     }
 
     public void speak() {
@@ -36,14 +38,18 @@ public class Cat extends Pet {
 
     @Override
     public int treat() {
-        heal();
+
+        int time = 0;
+
         if (miceCaught < 4) {
-            return (int) Math.ceil((getPainLevel() * 2) / getHealth());
+            time = (int) Math.ceil((getPainLevel() * 2) / getHealth());
         } else if (miceCaught <= 7) {
-            return (int) Math.ceil(getPainLevel() / getHealth());
+            time = (int) Math.ceil(getPainLevel() / getHealth());
         } else {
-            return (int) Math.ceil(getPainLevel() / (getHealth() * 2));
+            time = (int) Math.ceil(getPainLevel() / (getHealth() * 2));
         }
+        heal();
+        return time;
     }
 
     public boolean equals(Object o) {

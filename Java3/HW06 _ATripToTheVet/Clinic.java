@@ -27,7 +27,8 @@ public class Clinic {
         String type = "";
         double drool = -1;
         int mice = -1;
-        int time = -1;
+        int timeIn = -1;
+        String timeOut = "";
         double x = -1;
         double health = -1;
         int painLevel = -1;
@@ -48,12 +49,12 @@ public class Clinic {
             } else {
                 throw new InvalidPetException("Invalid Pet Type");
             }
-            time = Integer.parseInt(lineArr[3]);
+            timeIn = Integer.parseInt(lineArr[3]);
 
             // System.out.println(mice);
 
             System.out.println(
-                    "Consultation for " + name + " the " + type + " at " + time + ".");
+                    "Consultation for " + name + " the " + type + " at " + timeIn + ".");
 
             boolean success = false;
             while (!success) {
@@ -81,16 +82,16 @@ public class Clinic {
                 }
             }
 
-            Dog doggo;
-            Cat kitty;
+            Pet pet;
             if (type.toUpperCase().equals("DOG")) {
-                doggo = new Dog(name, health, painLevel, drool);
-                doggo.speak();
+                pet = new Dog(name, health, painLevel, drool);
             } else {
-                kitty = new Cat(name, health, painLevel, mice);
-                kitty.speak();
+                pet = new Cat(name, health, painLevel, mice);
             }
-            s += name + "," + type + "," + x + ",Day " + day + "," + time + "," + time + "," + health + "," + painLevel
+            pet.speak();
+            timeOut = addTime(Integer.toString(timeIn), pet.treat());
+            s += name + "," + type + "," + x + ",Day " + day + "," + timeIn + "," + timeOut + "," + health + ","
+                    + painLevel
                     + "\n";
 
         }
@@ -112,5 +113,12 @@ public class Clinic {
         } catch (IOException e) {
         }
         return true;
+    }
+
+    private String addTime(String timeIn, int treatmentTime) {
+        int in = Integer.parseInt(timeIn);
+        int timeOut = in + treatmentTime;
+
+        return Integer.toString(timeOut);
     }
 }
