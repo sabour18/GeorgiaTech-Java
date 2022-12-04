@@ -10,16 +10,19 @@ public class ClinicDriver {
         String dayOneReport = "";
         try {
             dayOneReport = clinic.nextDay("Appointments.csv");
+            System.out.println(dayOneReport);
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
+        } catch (InvalidPetException e) {
+            e.printStackTrace();
         }
-        /*
-         * String[] dayOneAppointments = dayOneReport.split("\\n");
-         * for (String appointment : dayOneAppointments) {
-         * if (!clinic.addToFile(appointment)) {
-         * System.out.println("Appointment could not be added to file!");
-         * }
-         * }
-         */
+
+        String[] dayOneAppointments = dayOneReport.split("\\n");
+        for (String appointment : dayOneAppointments) {
+            if (!clinic.addToFile(appointment)) {
+                System.out.println("Appointment could not be added to file!");
+            }
+        }
+
     }
 }
